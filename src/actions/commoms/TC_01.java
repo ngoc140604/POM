@@ -1,4 +1,4 @@
 package actions.commoms;
 
-public class Abstractage {
+public class TC_01 {
 }
