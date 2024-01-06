@@ -1,11 +1,11 @@
 package actions.commoms;
 
+import interfaces.rise.fairsketch.AddTaskPopupITF;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.Set;
 
-public class AbstractPage {
+public class AbstractPagee {
     //Web browser
     public void openUrl(WebDriver driver, String url){
         driver.get(url);
@@ -41,7 +41,7 @@ public class AbstractPage {
     public WebElement findAnElement(WebDriver driver, String locator){
         return driver.findElement(By.xpath(locator));
     }
-    public List<WebElement> findElements(WebDriver driver,String locator){
+    public List<WebElement> findElements(WebDriver driver, String locator){
         return driver.findElements(By.xpath(locator));
     }
     //Web element
@@ -84,7 +84,7 @@ public class AbstractPage {
 
     }
     public void waitForElementInvisible(WebDriver driver,String locator){
-       By xpath = By.xpath(locator);
+        By xpath = By.xpath(locator);
         WebDriverWait wait = new WebDriverWait(driver,30);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(xpath));
 
@@ -121,18 +121,18 @@ public class AbstractPage {
         }
     }
 
-        public void unCheckToCheckBox(WebDriver driver,String locator){
-            WebElement element = findAnElement(driver, locator);
-            if (element.isSelected()) {
-                element.click();
+    public void unCheckToCheckBox(WebDriver driver,String locator){
+        WebElement element = findAnElement(driver, locator);
+        if (element.isSelected()) {
+            element.click();
 
 
-            }
         }
-        public String getAttributeValue(WebDriver driver,String locator,String attributeValue){
-            WebElement element = findAnElement(driver, locator);
-            return element.getAttribute(attributeValue);
-        }
+    }
+    public String getAttributeValue(WebDriver driver,String locator,String attributeValue){
+        WebElement element = findAnElement(driver, locator);
+        return element.getAttribute(attributeValue);
+    }
     public String getTextElement(WebDriver driver,String locator){
         WebElement element = findAnElement(driver, locator);
         return element.getText();
@@ -148,12 +148,31 @@ public class AbstractPage {
             }
         }
     }
+    public void ClearValueInToElement(WebDriver driver,String locator){
+        WebElement element = findAnElement(driver, locator);
+        element.clear();
+    }
+    public String getPageTitle(WebDriver driver) {
+        String title =getTitle(driver);
+        return title;
+    }
 
+    public boolean verifyPageTitle(WebDriver driver,String pageTitle) {
+        return getPageTitle(driver).contains(pageTitle);
+    }
 
+    public void handleDropdown(WebDriver driver,String locator1, String locator2){
+        clickToElement(driver, locator1);
+        clickToElement(driver,locator2);
 
+    }
+    public void handleDropdown2(WebDriver driver,String locator,String value){
+        WebElement element =findAnElement(driver,locator);
+        Actions action = new Actions(driver);
+        action.sendKeys(element, value).build().perform();
+        action.sendKeys(Keys.ENTER).build().perform();
 
-
-
+    }
 
 
 }
