@@ -17,7 +17,7 @@ public class AbstractTest {
 //    @BeforeTest
     public WebDriver openMultiBrowse(String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "E:\\AT_Java\\C1023_Ngoc\\driver\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", ".\\src\\resources\\chromedriver.exe");
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
             System.setProperty("webdriver.gecko.driver", ".\\src\\resources\\geckodriver.exe");

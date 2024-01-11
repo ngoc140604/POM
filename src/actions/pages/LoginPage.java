@@ -1,10 +1,10 @@
 package actions.pages;
 
-import actions.commoms.AbstractPagee;
+import actions.commoms.AbstractPage;
 import interfaces.rise.fairsketch.LoginPageITF;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends AbstractPagee {
+public class LoginPage extends AbstractPage {
     WebDriver driver;
 
     public LoginPage(WebDriver driver) {
@@ -29,7 +29,7 @@ public class LoginPage extends AbstractPagee {
 
     public DashBoardPage clickLogin(){
         clickToElement(driver, LoginPageITF.btnSubmit);
-        System.out.println("Click submit button");
+        System.out.println("Step 4: Click submit button");
         return new DashBoardPage(driver);
 
 

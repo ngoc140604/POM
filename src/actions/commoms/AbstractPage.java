@@ -1,6 +1,5 @@
 package actions.commoms;
 
-import interfaces.rise.fairsketch.AddTaskPopupITF;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.Set;
 
-public class AbstractPagee {
+public class AbstractPage {
     //Web browser
     public void openUrl(WebDriver driver, String url){
         driver.get(url);
@@ -172,6 +171,13 @@ public class AbstractPagee {
         action.sendKeys(element, value).build().perform();
         action.sendKeys(Keys.ENTER).build().perform();
 
+    }
+    public boolean verifyElementIsVisible(WebDriver driver,String locator){
+        WebElement element = findAnElement(driver, locator);
+        return element.isDisplayed();
+    }
+    public void handleAlert(WebDriver driver){
+        driver.switchTo().alert().accept();
     }
 
 
